@@ -1,6 +1,7 @@
 SRC_DIR = ./src/
 
 SRCS =	${SRC_DIR}main.c\
+		${SRC_DIR}utils.c
 
 OBJS =	${SRCS:.c=.o}
 
@@ -8,12 +9,14 @@ NAME =	push_swap
 
 CC =	cc
 
+CFLAGSDEV =	-Wall -Wextra -Werror -g3
+
 CFLAGS =	-Wall -Wextra -Werror
 
-LDFLAGS =	-L./libft -lft 
+LDFLAGS =	-L./libft -lft
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGSDEV} -c $< -o ${<:.c=.o}
 
 all:	${NAME}
 
