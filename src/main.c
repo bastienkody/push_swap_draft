@@ -14,11 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
+	if (argc < 2 || checker(argc, argv))
 		return (1);
-	checker(argc, argv);
 }
 
+/* check : non digit -->return1 && int overflow -->exit() */
 int	checker(int argc, char **argv)
 {
 	int	i;
@@ -32,7 +32,7 @@ int	checker(int argc, char **argv)
 				i++;
 			if (!ft_isdigit(argv[argc][i]))
 			{
-				ft_fprintf(2, "Error\n(number:\"%s\")\n", argv[argc]);
+				ft_fprintf(2, "Error (number:\"%s\")\n", argv[argc]);
 				return (1);
 			}
 			i++;
