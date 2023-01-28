@@ -24,9 +24,9 @@ int	checker(int argc, char **argv)
 {
 	int	i;
 	int	argc_tmp;
-	int	values[argc];
+	int	values[argc-1];
 
-	argc_tmp = argc;
+	argc_tmp = argc -1;
 	while (--argc_tmp > 0)
 	{
 		i = 0;
@@ -47,22 +47,10 @@ int	checker(int argc, char **argv)
 		return (1);	
 	return (0);
 }
-/* maxi bugs for 0
+/* maxi bugs
+on choppe argv[0] dans values je crois
+plus values doit etre malloc car vla ... */
 
-bastienguillaume@Bastiens-MBP push_swap % ./push_swap 0 1 02 03 08 5 6 7 8 9
-9
-8
-7
-6
-5
-8
-3
-2
-1
-0
-Duplicate : 0 (i==0) vs 0 (j==1)
-bastienguillaume@Bastiens-MBP push_swap % 
-*/
 int	check_duplicate(int argc, int values[])
 {
 	int	i;
@@ -74,9 +62,10 @@ int	check_duplicate(int argc, int values[])
 		j = i + 1;
 		while (j < argc)
 		{
+			ft_fprintf(1, "values[%i]:%i, value[%i]:%i\n", i, values[i], j, values[j]);
 			if (values[i] == values[j])
 			{
-				ft_fprintf(2, "Duplicate : %i (i==%i) vs %i (j==%i)\n", values[i], i, values[j], j);
+				//ft_fprintf(2, "Duplicate : %i (i==%i) vs %i (j==%i)\n", values[i], i, values[j], j);
 				return (1);
 			}
 			j++;
