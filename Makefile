@@ -1,3 +1,5 @@
+INC = ./inc/push_swap.h
+
 SRC_DIR = ./src/
 
 SRCS =	${SRC_DIR}main.c\
@@ -15,12 +17,12 @@ CFLAGS =	-Wall -Wextra -Werror
 
 LDFLAGS =	-L./libft -lft
 
-.c.o:
+.c.o:	
 		${CC} ${CFLAGSDEV} -c $< -o ${<:.c=.o}
 
 all:	${NAME}
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${INC} 
 			make -C libft/
 			${CC} -o ${NAME} ${OBJS} ${LDFLAGS}
 
@@ -34,4 +36,4 @@ fclean:		clean
 
 re:		fclean all
 
-.PHONY:	all clean bonus re
+.PHONY:	all clean bonus re libft
