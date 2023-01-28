@@ -1,3 +1,7 @@
+#custom
+.swp
+push_swap
+
 # Prerequisites
 *.d
 
