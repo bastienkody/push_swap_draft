@@ -33,7 +33,7 @@ int	ft_atoi_novflw(const char *nptr)
 		res = res * 10 + (*nptr++ - '0');
 		if (res < old_res)
 		{
-			ft_fprintf(1, "Error (Int overflow)\n");
+			ft_fprintf(2, "Error (Int overflow)\n");
 			exit(EXIT_FAILURE);
 		}
 	}
