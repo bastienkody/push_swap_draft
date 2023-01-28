@@ -18,6 +18,7 @@
 # include <limits.h>
 
 int	checker(int argc, char **argv);
+int	check_duplicate(int argc, int values[]);
 int	ft_atoi_novflw(const char *nptr);
 
 #endif
