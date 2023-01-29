@@ -4,6 +4,7 @@ SRC_DIR = ./src/
 
 SRCS =	${SRC_DIR}main.c\
 		${SRC_DIR}parsing.c\
+		${SRC_DIR}struct_nb.c\
 		${SRC_DIR}utils.c
 
 OBJS =	${SRCS:.c=.o}

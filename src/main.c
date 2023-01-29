@@ -14,9 +14,13 @@
 
 int	main(int argc, char **argv)
 {
+	t_nb	*start;
+
 	if (argc < 2 || checker(argc, argv))
 		return (1);
 	ft_fprintf(1, "Arguments are corrects\n");
-	
+	start = nb_to_list(argc, argv);
+	nb_lstprint(start);
+	check_duplicate(argc, start);
+	nb_lstclear(&start);
 }
-

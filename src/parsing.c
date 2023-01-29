@@ -17,12 +17,8 @@ int	checker(int argc, char **argv)
 {
 	int	i;
 	int	tmp;
-	int	*values;
 
 	tmp = argc;
-    values = malloc((argc - 1) * sizeof(int));
-    if (!values)
-        exit(EXIT_FAILURE);
 	while (--tmp > 0)
 	{
 		i = 0;
@@ -41,53 +37,41 @@ int	checker(int argc, char **argv)
 	return (0);
 }
 
-/*ft_fprintf(1, "%i\n", values[tmp - 1]);
-		values[tmp - 1] = ft_atoi_novflw(argv[tmp]);
-	}
-	if (check_duplicate(argc, values))
-		return (1);	*/
-
-int	check_duplicate(int argc, int values[])
+t_nb	*nb_to_list(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	t_nb	*start;
+	t_nb	*nb;
 
-	i = -1;
-	while (++i < argc)
+	start = nb_lstnew(ft_atoi(*(++argv)));
+	if (!start)
+		return (NULL);
+	while (--argc > 1)
 	{
-		j = i + 1;
-		while (j < argc - 1)
+		nb = nb_lstnew(ft_atoi(*(++argv)));
+		if (!nb)
+			nb_lstclear(&start);
+		nb_lstadd_back(&start, nb);
+	}
+	return (start);
+}
+
+int	check_duplicate(int argc, t_nb *start)
+{
+	t_nb	*tmp;
+
+	while (--argc > 1)
+	{
+		tmp = start->next;
+		while (tmp)
 		{
-			ft_fprintf(1, "values[%i]:%i, value[%i]:%i\n", i, values[i], j, values[j]);
-			if (values[i] == values[j])
+			if (start->val == tmp->val)
 			{
-				ft_fprintf(2, "Duplicate : %i (i==%i) vs %i (j==%i)\n", values[i], i, values[j], j);
+				ft_fprintf(2, "Duplicate : startnb:%i\n", start->val);
 				return (1);
 			}
-			j++;
+			tmp = tmp->next;
 		}
+		start = start->next;
 	}
 	return (0);
 }
-
-t_list  *nb_to_list(int argc, char **argv)
-{
-    t_nb    *nb;
-    t_list  *start;
-
-    start = malloc(1 * sizeof(t_list));
-    if (!start)
-        exit(EXIT_FAILURE);
-    while (--argc > 1)
-    {
-        nb = malloc(1 * sizeof(t_nb));
-        if (!nb)
-            ft_lstclear(&start, ft_lstdelone);
-        nb->val = ft_atoi(++argv);
-        ft_lstadd_back(&start, ft_lstnew(nb));
-
-
-
-}
-
-
