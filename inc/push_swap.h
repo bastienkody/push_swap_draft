@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <limits.h>
 
+typedef struct nb
+{
+    int index;
+    int val;
+}               t_nb;
+
 int	checker(int argc, char **argv);
 int	check_duplicate(int argc, int values[]);
 int	ft_atoi_novflw(const char *nptr);
