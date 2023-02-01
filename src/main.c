@@ -30,22 +30,33 @@ int	main(int argc, char **argv)
 	if (argc < 2 || checker(argc, argv))
 		return (1);
 	stack_a = nb_to_list(argc, argv);
+	
+	if(check_duplicate(argc, stack_a))
+	{
+		nb_lstclear(&stack_a);
+		return (1);
+	}
 	ft_fprintf(1, "Arguments are corrects\n");
-	check_duplicate(argc, stack_a);
+
 	stack_b = NULL;
 
 	print_both_stacks(stack_a, stack_b);
 
 	//nb_lstprint(stack_a);
 	//push_a(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	r_rotate_both(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
+	//r_rotate_both(&stack_a, &stack_b);
 	r_rotate_both(&stack_a, &stack_b);
  
 	print_both_stacks(stack_a, stack_b);
+
+	if (!is_sorted(stack_a, stack_b))
+		ft_fprintf(1, "Sorted!\n");
+	else
+		ft_fprintf(1, "Unsorted!\n");
 
 	nb_lstclear(&stack_a);
 	nb_lstclear(&stack_b);

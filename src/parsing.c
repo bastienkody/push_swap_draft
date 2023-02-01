@@ -66,7 +66,7 @@ int	check_duplicate(int argc, t_nb *start)
 		{
 			if (start->val == tmp->val)
 			{
-				ft_fprintf(2, "Duplicate : startnb:%i\n", start->val);
+				ft_fprintf(2, "Duplicate nb: %i\n", start->val);
 				return (1);
 			}
 			tmp = tmp->next;
