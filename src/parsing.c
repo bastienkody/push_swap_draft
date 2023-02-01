@@ -55,6 +55,7 @@ t_nb	*nb_to_list(int argc, char **argv)
 	return (start);
 }
 
+/* print duplicate + return (1) */
 int	check_duplicate(int argc, t_nb *start)
 {
 	t_nb	*tmp;
