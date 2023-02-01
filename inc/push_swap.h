@@ -36,4 +36,15 @@ void	nb_lstadd_back(t_nb **lst, t_nb *new);
 void	nb_lstclear(t_nb **lst);
 void	nb_lstprint(t_nb *lst);
 
+void	push_a(t_nb **a, t_nb **b);
+void	push_b(t_nb **b, t_nb **a);
+void	swap(t_nb **start, char c);
+void	rotate(t_nb **start, char c);
+void	r_rotate(t_nb **start, char c);
+
+void	swap_both(t_nb **stack_a, t_nb **stack_b);
+void	rotate_both(t_nb **stack_a, t_nb **stack_b);
+void	r_rotate_both(t_nb **stack_a, t_nb **stack_b);
+
+
 #endif

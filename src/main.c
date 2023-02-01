@@ -12,15 +12,41 @@
 
 #include "../inc/push_swap.h"
 
+void	print_both_stacks(t_nb *stack_a, t_nb *stack_b)
+{
+	ft_fprintf(1, "Both stacks\n");
+	ft_fprintf(1, "stack_a\n");
+	nb_lstprint(stack_a);
+	ft_fprintf(1, "stack_b\n");
+	nb_lstprint(stack_b);
+	ft_fprintf(1, "End of both stacks\n");
+}
+
 int	main(int argc, char **argv)
 {
-	t_nb	*start;
-
+	t_nb	*stack_a;
+	t_nb	*stack_b;
+ 
 	if (argc < 2 || checker(argc, argv))
 		return (1);
+	stack_a = nb_to_list(argc, argv);
 	ft_fprintf(1, "Arguments are corrects\n");
-	start = nb_to_list(argc, argv);
-	nb_lstprint(start);
-	check_duplicate(argc, start);
-	nb_lstclear(&start);
+	check_duplicate(argc, stack_a);
+	stack_b = NULL;
+
+	print_both_stacks(stack_a, stack_b);
+
+	//nb_lstprint(stack_a);
+	//push_a(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	r_rotate_both(&stack_a, &stack_b);
+	r_rotate_both(&stack_a, &stack_b);
+ 
+	print_both_stacks(stack_a, stack_b);
+
+	nb_lstclear(&stack_a);
+	nb_lstclear(&stack_b);
 }
