@@ -27,6 +27,7 @@ typedef struct s_nb
 int		checker(int argc, char **argv);
 int		check_duplicate(int argc, t_nb *start);
 int		ft_atoi_novflw(const char *nptr);
+int		is_sorted(t_nb *stack_a, t_nb *stack_b);
 t_nb	*nb_to_list(int argc, char **argv);
 void	print_nb_list(void *nb);
 

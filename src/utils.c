@@ -39,3 +39,24 @@ int	ft_atoi_novflw(const char *nptr)
 	}
 	return (res * sign);
 }
+
+/* stack_B == empty && stack_a == sorted */
+int	is_sorted(t_nb *stack_a, t_nb *stack_b)
+{
+	t_nb	*tmp;
+
+	if (stack_b || !stack_a)
+		return (1);
+	while (stack_a->next)
+	{
+		tmp = stack_a->next;
+		while (tmp)
+		{
+			if (stack_a->val > tmp->val)
+				return (1);
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+	return (0);
+}
