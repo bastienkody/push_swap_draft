@@ -41,17 +41,26 @@ t_nb	*nb_to_list(int argc, char **argv)
 {
 	t_nb	*start;
 	t_nb	*nb;
+	int		arg;
 
+	arg = argc;
 	start = nb_lstnew(ft_atoi(*(++argv)));
 	if (!start)
 		return (NULL);
 	while (--argc > 1)
 	{
 		nb = nb_lstnew(ft_atoi(*(++argv)));
+		nb->index = -1;
 		if (!nb)
 			nb_lstclear(&start);
 		nb_lstadd_back(&start, nb);
 	}
+	if (check_duplicate(arg, start))
+	{
+		nb_lstclear(&start);
+		return (NULL);
+	}
+	set_index(start, arg);
 	return (start);
 }
 

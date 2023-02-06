@@ -20,6 +20,16 @@ void	print_both_stacks(t_nb *stack_a, t_nb *stack_b)
 	ft_fprintf(1, "stack_b\n");
 	nb_lstprint(stack_b);
 	ft_fprintf(1, "End of both stacks\n");
+	ft_fprintf(1, "------------------\n");
+}
+
+void	print_index(t_nb *lst)
+{
+	while (lst)
+	{
+		ft_fprintf(1, "val:%i, idx:%i\n", lst->val, lst->index);
+		lst = lst->next;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -30,17 +40,12 @@ int	main(int argc, char **argv)
 	if (argc < 2 || checker(argc, argv))
 		return (1);
 	stack_a = nb_to_list(argc, argv);
-	
-	if(check_duplicate(argc, stack_a))
-	{
-		nb_lstclear(&stack_a);
-		return (1);
-	}
-	ft_fprintf(1, "Arguments are corrects\n");
-
+	if(!stack_a)
+		return (1);	
 	stack_b = NULL;
 
-	print_both_stacks(stack_a, stack_b);
+	print_index(stack_a);
+	//print_both_stacks(stack_a, stack_b);
 
 	//nb_lstprint(stack_a);
 	//push_a(&stack_a, &stack_b);
@@ -51,10 +56,13 @@ int	main(int argc, char **argv)
 	//r_rotate_both(&stack_a, &stack_b);
 	//rotate_both(&stack_a, &stack_b);
 	//swap_both(&stack_a, &stack_b);
- 
+
+	if (argc < 7)
+		sort_few(&stack_a, &stack_b, argc);
+
 	print_both_stacks(stack_a, stack_b);
 
-	if (is_sorted(stack_a, stack_b))
+	if (is_sorted(stack_a))
 		ft_fprintf(1, "Sorted!\n");
 	else
 		ft_fprintf(1, "Unsorted!\n");

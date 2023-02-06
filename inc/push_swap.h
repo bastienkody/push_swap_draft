@@ -27,9 +27,10 @@ typedef struct s_nb
 int		checker(int argc, char **argv);
 int		check_duplicate(int argc, t_nb *start);
 int		ft_atoi_novflw(const char *nptr);
-int		is_sorted(t_nb *stack_a, t_nb *stack_b);
+int		is_sorted(t_nb *stack_a);
 t_nb	*nb_to_list(int argc, char **argv);
 void	print_nb_list(void *nb);
+void	set_index(t_nb *stack, int arg);
 
 t_nb	*nb_lstnew(int val);
 t_nb	*nb_lstlast(t_nb *lst);
@@ -47,5 +48,8 @@ void	swap_both(t_nb **stack_a, t_nb **stack_b);
 void	rotate_both(t_nb **stack_a, t_nb **stack_b);
 void	r_rotate_both(t_nb **stack_a, t_nb **stack_b);
 
+void	sort_two(t_nb **stack, char c);
+void	sort_three(t_nb **stack, char c);
+void	sort_few(t_nb **stack_a, t_nb **stack_b, int argc);
 
 #endif

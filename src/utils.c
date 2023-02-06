@@ -40,13 +40,10 @@ int	ft_atoi_novflw(const char *nptr)
 	return (res * sign);
 }
 
-/* stack_B == empty && stack_a == sorted */
-int	is_sorted(t_nb *stack_a, t_nb *stack_b)
+int	is_sorted(t_nb *stack_a)
 {
 	t_nb	*tmp;
 
-	if (stack_b || !stack_a)
-		return (0);
 	while (stack_a->next)
 	{
 		tmp = stack_a->next;
@@ -59,4 +56,41 @@ int	is_sorted(t_nb *stack_a, t_nb *stack_b)
 		stack_a = stack_a->next;
 	}
 	return (1);
+}
+
+t_nb	*find_bigst(t_nb *stack_a)
+{
+	t_nb	*tmp;
+	t_nb	*bigst;
+
+	while (stack_a && stack_a->index != -1)
+		stack_a = stack_a->next;
+	bigst = stack_a;
+	while (stack_a && stack_a->index != -1)
+		stack_a = stack_a->next;
+	tmp = stack_a;
+	while (tmp)
+	{
+		if (bigst->val < tmp->val && tmp->index == -1)
+			bigst = tmp;
+		tmp = tmp->next;
+	}
+	return (bigst);
+}
+
+void	set_index(t_nb *stack, int argc)
+{
+	int		idx;
+	t_nb	*tmp;
+
+	idx = argc - 1 - 1; // a.out + idx vs stock
+	tmp = stack;
+	while (idx > -1)
+	{
+		tmp = find_bigst(stack);
+		if (!tmp)
+			return ;
+		tmp->index = idx;
+		idx--;
+	}
 }

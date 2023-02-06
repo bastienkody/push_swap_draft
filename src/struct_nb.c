@@ -69,7 +69,7 @@ void	nb_lstprint(t_nb *lst)
 {
 	while (lst)
 	{
-		ft_fprintf(1, "%i\n", lst->val);
+		ft_fprintf(1, "val:%i\n", lst->val);
 		lst = lst->next;
 	}
 }
