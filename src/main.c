@@ -46,15 +46,15 @@ int	main(int argc, char **argv)
 	//push_a(&stack_a, &stack_b);
 	//push_b(&stack_a, &stack_b);
 	//push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
+	//push_b(&stack_a, &stack_b);
 	//r_rotate_both(&stack_a, &stack_b);
-	r_rotate_both(&stack_a, &stack_b);
-	rotate_both(&stack_a, &stack_b);
-	swap_both(&stack_a, &stack_b);
+	//r_rotate_both(&stack_a, &stack_b);
+	//rotate_both(&stack_a, &stack_b);
+	//swap_both(&stack_a, &stack_b);
  
 	print_both_stacks(stack_a, stack_b);
 
-	if (!is_sorted(stack_a, stack_b))
+	if (is_sorted(stack_a, stack_b))
 		ft_fprintf(1, "Sorted!\n");
 	else
 		ft_fprintf(1, "Unsorted!\n");
