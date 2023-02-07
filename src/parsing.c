@@ -47,6 +47,7 @@ t_nb	*nb_to_list(int argc, char **argv)
 	start = nb_lstnew(ft_atoi(*(++argv)));
 	if (!start)
 		return (NULL);
+	start->index = -1;
 	while (--argc > 1)
 	{
 		nb = nb_lstnew(ft_atoi(*(++argv)));

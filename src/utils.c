@@ -58,7 +58,7 @@ int	is_sorted(t_nb *stack_a)
 	return (1);
 }
 
-t_nb	*find_bigst(t_nb *stack_a)
+t_nb	*find_smallst(t_nb *stack_a)
 {
 	t_nb	*tmp;
 	t_nb	*bigst;
@@ -87,7 +87,7 @@ void	set_index(t_nb *stack, int argc)
 	tmp = stack;
 	while (idx > -1)
 	{
-		tmp = find_bigst(stack);
+		tmp = find_smallst(stack);
 		if (!tmp)
 			return ;
 		tmp->index = idx;
