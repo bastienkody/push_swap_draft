@@ -37,6 +37,7 @@ int	checker(int argc, char **argv)
 	return (0);
 }
 
+/* atoi(argv) to llist + set index (0==smallest) + free list return NULL if duplicate*/
 t_nb	*nb_to_list(int argc, char **argv)
 {
 	t_nb	*start;
