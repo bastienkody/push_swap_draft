@@ -1,6 +1,9 @@
 #custom
 .swp
 push_swap
+checker
+imgui.ini
+push_swap_visualizer/.clang-format
 
 # Prerequisites
 *.d
