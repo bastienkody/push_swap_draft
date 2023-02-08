@@ -8,6 +8,7 @@ SRCS =	${SRC_DIR}main.c\
 		${SRC_DIR}instructions.c\
 		${SRC_DIR}instruction_s.c\
 		${SRC_DIR}sorting_few.c\
+		${SRC_DIR}radix_sort.c\
 		${SRC_DIR}utils.c
 
 OBJS =	${SRCS:.c=.o}

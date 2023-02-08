@@ -87,4 +87,57 @@ b - on invert sort_two dans b [1 coup]
 c - on sort_three dans a [2 coups]
 d - on push_a [2 coups]
 
+-------------------------
+| SORT_LOT | RADIX_SORT | 
+-------------------------
+1 - on utiliser l'index pour trier (permet de simpliier sur les nb negatis)
+2 - on radix sort en binaire sur l'index. index en binaire == 0 ou 1 sur 31 bits (le 32e est a zero car pas de neg) 
+	a - on push dans b tous les nb qui ont un 1 au rightmost bit (on rotate_a pour tous les passer)
+	b - on les repasse tous dans a
+	c - on repete a - b pour parcourir tous les digits -- attention a bien s'arreter au 31e ou 32e? Quid si jamais index > int max? index oerlow et passe neg aec letmost bit at 1 --> nique le tri 
 
+exemple : 
+4 - 0100
+5 - 0101
+1 - 0001
+2 - 0010
+1ER TOUR
+rightmost digit & 1 passent a stack_b
+4 - 0100		1 - 0001
+2 - 0010		5 - 0101
+puis reiennent sur stack_a
+5 - 0101
+1 - 0001
+4 - 0100		
+2 - 0010		
+2EME TOUR
+2nd righmost digit push_b
+5 - 0101		2 - 0010
+1 - 0001
+4 - 0100
+push_a		
+2 - 0010
+5 - 0101
+1 - 0001
+4 - 0100		
+3EME TOUR
+3eme rightmost digit push_b
+2 - 0010	4 - 0100	
+1 - 0001	5 - 0101
+push_a
+5 - 0101
+4 - 0100	
+2 - 0010	
+1 - 0001
+
+Cest trie, mais a l'eners. On peut inerser l'ordre des indices pour que ce soit trier par ordre croissant 
+Done --> l'indexation est inersee (plus petit nb recoit plus grand index) -> trie ok
+Par contre j'ai trop de ra en fin de trie :
+on boucle sur les 31 bits pour chaque indice, or cela n'est utile que si l'on a 2^31 -1 indices ou presque
+genre si ya 500 nombres, indices max 499 == 0b111110011 -> 9 bits peupler, pas la peine d'aller tester les 22 bits plus a gauche
+Formule pour calculer le nombre de bits necessaires pour ecrire un nombre :
+- decomposer/compter le nombre de puissance de deux
+- utiliser le conbase (ou juste itoa_base) de piscine et strlen 
+Il sufit simplement de calculer combien de ois le nb est diisible par 2 :
+while (nb/2)
+	i++;

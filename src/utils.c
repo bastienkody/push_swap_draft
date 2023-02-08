@@ -71,7 +71,7 @@ t_nb	*find_smallst(t_nb *stack_a)
 	tmp = stack_a;
 	while (tmp)
 	{
-		if (smlst->val < tmp->val && tmp->index == -1)
+		if (smlst->val > tmp->val && tmp->index == -1)
 			smlst = tmp;
 		tmp = tmp->next;
 	}
@@ -93,4 +93,17 @@ void	set_index(t_nb *stack, int argc)
 		tmp->index = idx;
 		idx--;
 	}
+}
+
+int	nb_lstsize(t_nb *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }

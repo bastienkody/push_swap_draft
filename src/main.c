@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 		return (1);	
 	stack_b = NULL;
 
-	print_index(stack_a);
 	//print_both_stacks(stack_a, stack_b);
 
 	//nb_lstprint(stack_a);
@@ -57,16 +56,22 @@ int	main(int argc, char **argv)
 	//rotate_both(&stack_a, &stack_b);
 	//swap_both(&stack_a, &stack_b);
 
-	if (argc < 7)
-		sort_few(&stack_a, &stack_b, argc);
+	if (!is_sorted(stack_a))
+	{
+		if (argc < 7)
+			sort_few(&stack_a, &stack_b, argc);
+		else
+			radix_sort(&stack_a, &stack_b, argc);
+	}
 
-	print_both_stacks(stack_a, stack_b);
+	//print_both_stacks(stack_a, stack_b);
 
-	if (is_sorted(stack_a))
+/*	if (is_sorted(stack_a))
 		ft_fprintf(1, "Sorted!\n");
 	else
 		ft_fprintf(1, "Unsorted!\n");
-
+	print_index(stack_a);
+*/
 	nb_lstclear(&stack_a);
 	nb_lstclear(&stack_b);
 }
