@@ -87,6 +87,14 @@ b - on invert sort_two dans b [1 coup]
 c - on sort_three dans a [2 coups]
 d - on push_a [2 coups]
 
+--------------
+|  SORT_FOUR |
+--------------
+a - on push_b les 2 plus petits [3 + 2 coups]
+b - invert sort two dans b [1 coup]
+c - sort_two dans a [1 coup]
+d - on push_a [2 coups]
+
 -------------------------
 | SORT_LOT | RADIX_SORT | 
 -------------------------

@@ -18,12 +18,6 @@ void	sort_two(t_nb **stack, char c)
 		swap(stack, c);
 }
 
-void	invert_sort_two(t_nb **stack, char c)
-{
-	if (is_sorted(*stack))
-		swap(stack, c);
-}
-
 void	sort_three(t_nb **stack, char c)
 {
 	int	t[3];
@@ -51,6 +45,21 @@ void	sort_three(t_nb **stack, char c)
 		rotate(stack, c);
 }
 
+void	sort_four(t_nb **stack_a, t_nb **stack_b)
+{
+	while (nb_lstsize((*stack_b)) != 2)
+	{
+		if ((*stack_a)->index == 3 || (*stack_a)->index == 2)
+			push_b(stack_a, stack_b);
+		else
+			rotate(stack_a, 'a');
+	}
+	invert_sort_two(stack_b, 'b');
+	sort_two(stack_a, 'a');
+	push_a(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+}
+
 void	sort_five(t_nb **stack_a, t_nb **stack_b)
 {
 	while (nb_lstsize((*stack_b)) != 2)
@@ -74,6 +83,8 @@ void	sort_few(t_nb **stack_a, t_nb **stack_b, int argc)
 		sort_two(stack_a, 'a');
 	if (argc == 4)
 		sort_three(stack_a, 'a');
+	if (argc == 5)
+		sort_four(stack_a, stack_b);
 	if (argc == 6)
 		sort_five(stack_a, stack_b);
 }

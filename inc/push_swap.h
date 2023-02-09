@@ -50,6 +50,7 @@ void	rotate_both(t_nb **stack_a, t_nb **stack_b);
 void	r_rotate_both(t_nb **stack_a, t_nb **stack_b);
 
 void	sort_two(t_nb **stack, char c);
+void	invert_sort_two(t_nb **stack, char c);
 void	sort_three(t_nb **stack, char c);
 void	sort_few(t_nb **stack_a, t_nb **stack_b, int argc);
 
